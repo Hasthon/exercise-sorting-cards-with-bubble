@@ -16,7 +16,8 @@ body{
     height: 250px;
     box-shadow: 2px 2px 5px black;
     margin-top:50px;
-    margin-left:20px
+    margin-left:20px;
+    display:inline-flex;
     
 }
 .up-suit{

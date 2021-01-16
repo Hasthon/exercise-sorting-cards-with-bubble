@@ -31,7 +31,7 @@ function cardHtml(randomSuit, randomNum) {
     let newDownS = document.createElement("span");
     let newCardNum = document.createElement("span");
 
-    newcard.className = "card";
+    newcard.classList.add("card");
     bodycard.classList.add("body-card");
     newUpS.classList.add("up-suit")
     newDownS.classList.add("down-suit")
@@ -66,21 +66,30 @@ btn.addEventListener("click", () => {
 
 });
 
-sort.addEventListener("click",()=>{
+sort.addEventListener("click", () => {
+    console.log("Holaaaaa")
+    console.log(cardarray)
     let _top = cardarray.length - 1;
-while(_top > 0){
-    let j = 0;
-    while(j < _top){
-        if(cardarray[j] > cardarray[j+1]){
-            let aux = cardarray[j];
-            cardarray[j] = cardarray[j+1];
-            cardarray[j+1] = aux;
+    while (_top > 0) {
+        let j = 0;
+        while (j < _top) {
+            if (cardarray[j].randomNum > cardarray[j + 1].randomNum) {
+                let aux = cardarray[j];
+                cardarray[j] = cardarray[j + 1];
+                cardarray[j + 1] = aux;
+            }
+            let html = '';
+            let p= document.createElement("p")
+            for (let i = 0; i < cardarray.length; i++) {
+                html += cardHtml(cardarray[i].randomSuit, cardarray[i].randomNum);
+                input.value = "";
+            }
+             p.innerHTML=html;
+             document.body.appendChild(p)
+            j++;
         }
-        document.getElementById('cards_sort').innerHTML = html;
-        j++;
+        _top--;
     }
-    _top--;
-}
 })
 
 
